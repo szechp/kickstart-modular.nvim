@@ -11,13 +11,18 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>o', ':Neotree reveal<CR>', desc = '[O]pen NeoTree', silent = true },
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = false,
+      },
+    use_libuv_file_watcher = false,
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['<leader>o'] = 'close_window',
         },
       },
     },

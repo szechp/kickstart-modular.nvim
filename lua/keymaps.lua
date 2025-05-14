@@ -51,4 +51,67 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- [[ my custom stuff ]]
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'yaml',
+  callback = function(args)
+    local bufnr = args.buf
+    -- Wait for the yaml-language-server to start
+    local clients = vim.lsp.get_clients({ name = 'yamlls', bufnr = bufnr })
+    if #clients > 0 then
+      -- If the server is already running, call init()
+      require('custom.yaml-k8s-crds').init(bufnr)
+    else
+      -- If the server is not running, wait for it to start
+      vim.api.nvim_create_autocmd('LspAttach', {
+        once = true,
+        buffer = bufnr,
+        callback = function(lsp_args)
+          local client = vim.lsp.get_client_by_id(lsp_args.data.client_id)
+          if client and client.name == 'yamlls' then
+            require('custom.yaml-k8s-crds').init(bufnr)
+          end
+        end,
+      })
+    end
+  end,
+})
+
+vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true, desc = "Select all" })
+
+vim.api.nvim_set_keymap("x", "<S-Up>", "k", { noremap = true, silent = true, desc = "Extend visual selection up" })
+vim.api.nvim_set_keymap("x", "<S-Down>", "j", { noremap = true, silent = true, desc = "Extend visual selection down" })
+vim.api.nvim_set_keymap( "n", "<S-Up>", "<Esc>Vk", { noremap = true, silent = true, desc = "Start visual selection and move up" })
+vim.api.nvim_set_keymap( "n", "<S-Down>", "<Esc>Vj", { noremap = true, silent = true, desc = "Start visual selection and move down" })
+vim.api.nvim_set_keymap( "n", "<S-Left>", "v", { noremap = true, silent = true, desc = "Enter visual mode and select left" })
+vim.api.nvim_set_keymap( "n", "<S-Right>", "v", { noremap = true, silent = true, desc = "Enter visual mode and select right" })
+
+-- Example mappings for Alt+Up and Alt+Down
+vim.api.nvim_set_keymap("n", "<M-Up>", ":move .-2<CR>", { noremap = true, silent = true, desc = "Move line/block up" })
+vim.api.nvim_set_keymap("n", "<M-Down>", ":move .+1<CR>", { noremap = true, silent = true, desc = "Move line/block down" })
+vim.api.nvim_set_keymap("x", "<M-Up>", ":move '<-2<CR>gv-gv", { noremap = true, silent = true, desc = "Move line/block up" })
+vim.api.nvim_set_keymap("x", "<M-Down>", ":move '>+1<CR>gv-gv", { noremap = true, silent = true, desc = "Move line/block down" })
+
+vim.api.nvim_set_keymap("n", "<M-Left>", "<<", { noremap = true, silent = true, desc = "Decrease indentation" })
+vim.api.nvim_set_keymap("n", "<M-Right>", ">>", { noremap = true, silent = true, desc = "Increase indentation" })
+vim.api.nvim_set_keymap("x", "<M-Left>", "<gv", { noremap = true, silent = true, desc = "Decrease indentation" })
+vim.api.nvim_set_keymap("x", "<M-Right>", ">gv", { noremap = true, silent = true, desc = "Increase indentation" })
+
+vim.api.nvim_set_keymap("i", "<C-A>", "<HOME>", { noremap = true, silent = true, desc = "Jump to first char in line" })
+vim.api.nvim_set_keymap("i", "<C-E>", "<END>", { noremap = true, silent = true, desc = "Jump to last char in line" })
+
+vim.api.nvim_set_keymap("n", "<C-Left>", "<C-w>h", { noremap = true, silent = true, desc = "Move to left split" })
+vim.api.nvim_set_keymap("n", "<C-Right>", "<C-w>l", { noremap = true, silent = true, desc = "Move to right split" })
+
+vim.api.nvim_set_keymap("n", "dx", '<Cmd>normal "_dd<CR>', { noremap = true, silent = true, desc = "Delete line without yanking" })
+vim.api.nvim_set_keymap("v", "x", '"_d', { noremap = true, silent = true, desc = "Delete selection without yanking" })
+
+-- close neotree when opening debug
+-- vim.keymap.set('n', "<leader>du", function() vim.cmd.Neotree('toggle') require("dapui").toggle({ }) end)
+-- vim.keymap.set('n', "<leader>dc", function() vim.cmd.Neotree('toggle')  require("dap").continue() end)
+
+-- mini.surround like vim-surround
+-- vim.api.nvim_set_keymap("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true })
+-- vim.api.nvim_set_keymap("n", "yss", "ys_", { noremap = false })
+
 -- vim: ts=2 sts=2 sw=2 et

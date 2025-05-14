@@ -11,7 +11,7 @@ return {
   },
   lazy = false,
   keys = {
-    { '<leader>o', ':Neotree reveal<CR>', desc = '[O]pen NeoTree', silent = true },
+    { '<leader>o', ':Neotree reveal<CR>', desc = '[o]pen NeoTree', silent = true },
   },
   opts = {
     filesystem = {

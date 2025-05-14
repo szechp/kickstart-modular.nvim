@@ -14,7 +14,7 @@ return {
           local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
           lazygit:toggle()
         end,
-        desc = 'Toggle LazyGit',
+        desc = 'Lazy[g]it',
       },
       {
         '<C-`>',

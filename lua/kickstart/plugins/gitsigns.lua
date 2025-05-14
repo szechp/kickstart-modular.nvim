@@ -59,20 +59,20 @@ return {
           gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = '[g]it [h]unk [r]eset' })
         -- normal mode
-        map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = '[g]it [h]unk [s]tage' })
-        map('n', '<leader>ghr', gitsigns.reset_hunk, { desc = '[g]it [h]unk [r]eset' })
-        map('n', '<leader>gbs', gitsigns.stage_buffer, { desc = '[g]it [b]uffer [s]tage' })
-        map('n', '<leader>ghu', gitsigns.stage_hunk, { desc = '[g]it [h]unk [u]ndo stage' })
-        map('n', '<leader>gbr', gitsigns.reset_buffer, { desc = '[g]it [b]uffer [r]eset' })
-        map('n', '<leader>ghp', gitsigns.preview_hunk, { desc = '[g]it [h]unk [p]review' })
-        map('n', '<leader>glb', gitsigns.blame_line, { desc = '[g]it [l]ine [b]lame' })
-        map('n', '<leader>gd', gitsigns.diffthis, { desc = '[g]it [d]iff against index' })
+        map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = '[s]tage' })
+        map('n', '<leader>ghr', gitsigns.reset_hunk, { desc = '[r]eset' })
+        map('n', '<leader>gbs', gitsigns.stage_buffer, { desc = '[s]tage' })
+        map('n', '<leader>ghu', gitsigns.stage_hunk, { desc = '[u]ndo stage' })
+        map('n', '<leader>gbr', gitsigns.reset_buffer, { desc = '[r]eset' })
+        map('n', '<leader>ghp', gitsigns.preview_hunk, { desc = '[p]review' })
+        map('n', '<leader>glb', gitsigns.blame_line, { desc = '[b]lame' })
+        map('n', '<leader>gd', gitsigns.diffthis, { desc = '[d]iff against index' })
         map('n', '<leader>gD', function()
           gitsigns.diffthis '@'
-        end, { desc = 'git [D]iff against last commit' })
+        end, { desc = '[D]iff against last commit' })
         -- Toggles
-        map('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = '[g]it [t]oggle show [b]lame line' })
-        map('n', '<leader>gtd', gitsigns.preview_hunk_inline, { desc = '[g]it [t]oggle show [d]eleted' })
+        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'git show [b]lame line' })
+        map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = 'git show [D]eleted' })
       end,
     },
   },

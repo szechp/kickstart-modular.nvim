@@ -59,10 +59,13 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>g', group = '[G]it' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>gh', group = '[G]it [H]unk', mode = { 'n', 'v' } },
+        { '<leader>s', group = '[s]earch' },
+        { '<leader>g', group = '[g]it' },
+        { '<leader>t', group = '[t]oggle' },
+        { '<leader>gh', group = '[h]unk', mode = { 'n', 'v' } },
+        { '<leader>gl', group = '[l]ine' },
+        { '<leader>gb', group = '[b]buffer' },
+        { 'gs', group = '[s]urround', mode = { 'n', 'v' } },
       },
     },
   },

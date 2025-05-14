@@ -93,7 +93,7 @@ return {
           winblend = 10,
           previewer = false,
         })
-      end, { desc = '[S]earch [B]uffer (fuzzily)' })
+      end, { desc = '[S]earch [B]uffer (fuzzyly)' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys

@@ -110,8 +110,4 @@ vim.api.nvim_set_keymap("v", "x", '"_d', { noremap = true, silent = true, desc =
 -- vim.keymap.set('n', "<leader>du", function() vim.cmd.Neotree('toggle') require("dapui").toggle({ }) end)
 -- vim.keymap.set('n', "<leader>dc", function() vim.cmd.Neotree('toggle')  require("dap").continue() end)
 
--- mini.surround like vim-surround
--- vim.api.nvim_set_keymap("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true })
--- vim.api.nvim_set_keymap("n", "yss", "ys_", { noremap = false })
-
 -- vim: ts=2 sts=2 sw=2 et

@@ -76,6 +76,23 @@ return {
       end,
       desc = 'Debug: See last session result.',
     },
+    -- toggle neotree when opening dapui
+    {
+      '<leader>du',
+      function()
+        vim.cmd 'Neotree toggle'
+        vim.cmd 'DapViewToggle'
+      end,
+      desc = 'Debug UI: Toggle Neo-tree + DAP view',
+    },
+    {
+      '<leader>dc',
+      function()
+        vim.cmd 'Neotree toggle'
+        require('dap').continue()
+      end,
+      desc = 'Debug: Continue + Toggle Neo-tree',
+    },
   },
   config = function()
     local dap = require 'dap'

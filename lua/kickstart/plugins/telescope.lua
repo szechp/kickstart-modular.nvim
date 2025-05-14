@@ -85,7 +85,49 @@ return {
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Grep (cwd)' })
+      local telescope = require 'telescope'
+      local builtin = require 'telescope.builtin'
+      local actions = require 'telescope.actions'
+      local action_state = require 'telescope.actions.state'
+
+      -- Global toggle state for including ignored + hidden files in live_grep
+      _G._telescope_include_ignored = false
+
+      -- Helper to return live_grep options with dynamic additional_args and <C-i> toggle
+      local function get_live_grep_opts()
+        return {
+          additional_args = function()
+            if _G._telescope_include_ignored then
+              return { '--no-ignore', '--hidden' }
+            else
+              return {}
+            end
+          end,
+
+          -- Keybinding inside Telescope prompt to toggle ignored visibility and reopen picker
+          attach_mappings = function(_, map)
+            map({ 'i', 'n' }, '<C-i>', function(prompt_bufnr)
+              _G._telescope_include_ignored = not _G._telescope_include_ignored
+              actions.close(prompt_bufnr)
+              vim.schedule(function()
+                builtin.live_grep(get_live_grep_opts())
+              end)
+              vim.notify(
+                'Telescope [live_grep]: include ignored = ' .. tostring(_G._telescope_include_ignored),
+                vim.log.levels.INFO,
+                { title = 'Telescope Toggle' }
+              )
+            end)
+            return true
+          end,
+        }
+      end
+
+      -- Keymap to open live_grep with toggle support
+      vim.keymap.set('n', '<leader>/', function()
+        builtin.live_grep(get_live_grep_opts())
+      end, { desc = 'Grep (cwd, toggle with <M-i>)' })
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>sb', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.

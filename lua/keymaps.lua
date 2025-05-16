@@ -110,4 +110,14 @@ vim.api.nvim_set_keymap("v", "x", '"_d', { noremap = true, silent = true, desc =
 -- vim.keymap.set('n', "<leader>du", function() vim.cmd.Neotree('toggle') require("dapui").toggle({ }) end)
 -- vim.keymap.set('n', "<leader>dc", function() vim.cmd.Neotree('toggle')  require("dap").continue() end)
 
+vim.keymap.set('n', '<leader>tw', function()
+  vim.wo.wrap = not vim.wo.wrap
+  vim.notify('Wrap: ' .. (vim.wo.wrap and 'enabled' or 'disabled'))
+end, { desc = 'Toggle Line Wrap' })
+
+vim.keymap.set('n', '<leader>bd', function()
+  vim.cmd('bdelete')
+end, { desc = 'Delete Buffer' })
+
+
 -- vim: ts=2 sts=2 sw=2 et

@@ -17,16 +17,21 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup {
         mappings = {
-          add = "gsa",
-          delete = "gsd",
-          find = "gsf",
-          find_left = "gsF",
-          highlight = "gsh",
-          replace = "gsr",
-          update_n_lines = "gsn",
+          add = 'gsa',
+          delete = 'gsd',
+          find = 'gsf',
+          find_left = 'gsF',
+          highlight = 'gsh',
+          replace = 'gsr',
+          update_n_lines = 'gsn',
         },
       }
 
+      require('mini.bufremove').setup()
+
+      vim.keymap.set('n', '<leader>bd', function()
+        require('mini.bufremove').delete(0, false)
+      end, { desc = 'Delete Buffer' })
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,

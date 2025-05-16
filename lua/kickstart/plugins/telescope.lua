@@ -76,13 +76,11 @@ return {
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[h]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[k]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[f]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[s]elect Telescope' })
+      vim.keymap.set('n', '<leader>.', builtin.find_files, { desc = 'find files in [.]/' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'current [w]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'by [g]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[d]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[r]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>s<CR>', require('telescope.builtin').resume, { desc = 'resume last used picker' })
+      vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = '[r]ecent Files' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       local telescope = require 'telescope'
@@ -106,7 +104,7 @@ return {
 
           -- Keybinding inside Telescope prompt to toggle ignored visibility and reopen picker
           attach_mappings = function(_, map)
-            map({ 'i', 'n' }, '<C-i>', function(prompt_bufnr)
+            map({ 'i', 'n' }, '<M-i>', function(prompt_bufnr)
               _G._telescope_include_ignored = not _G._telescope_include_ignored
               actions.close(prompt_bufnr)
               vim.schedule(function()
@@ -126,7 +124,7 @@ return {
       -- Keymap to open live_grep with toggle support
       vim.keymap.set('n', '<leader>/', function()
         builtin.live_grep(get_live_grep_opts())
-      end, { desc = 'Grep (cwd, toggle with <M-i>)' })
+      end, { desc = 'grep (cwd)' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>sb', function()
@@ -144,7 +142,7 @@ return {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
-      end, { desc = 'in Open Files' })
+      end, { desc = 'grep in open files' })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sN', function()

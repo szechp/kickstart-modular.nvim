@@ -86,17 +86,6 @@ vim.api.nvim_set_keymap( "n", "<S-Down>", "<Esc>Vj", { noremap = true, silent = 
 vim.api.nvim_set_keymap( "n", "<S-Left>", "v", { noremap = true, silent = true, desc = "Enter visual mode and select left" })
 vim.api.nvim_set_keymap( "n", "<S-Right>", "v", { noremap = true, silent = true, desc = "Enter visual mode and select right" })
 
--- Example mappings for Alt+Up and Alt+Down
-vim.api.nvim_set_keymap("n", "<M-Up>", ":move .-2<CR>", { noremap = true, silent = true, desc = "Move line/block up" })
-vim.api.nvim_set_keymap("n", "<M-Down>", ":move .+1<CR>", { noremap = true, silent = true, desc = "Move line/block down" })
-vim.api.nvim_set_keymap("x", "<M-Up>", ":move '<-2<CR>gv-gv", { noremap = true, silent = true, desc = "Move line/block up" })
-vim.api.nvim_set_keymap("x", "<M-Down>", ":move '>+1<CR>gv-gv", { noremap = true, silent = true, desc = "Move line/block down" })
-
-vim.api.nvim_set_keymap("n", "<M-Left>", "<<", { noremap = true, silent = true, desc = "Decrease indentation" })
-vim.api.nvim_set_keymap("n", "<M-Right>", ">>", { noremap = true, silent = true, desc = "Increase indentation" })
-vim.api.nvim_set_keymap("x", "<M-Left>", "<gv", { noremap = true, silent = true, desc = "Decrease indentation" })
-vim.api.nvim_set_keymap("x", "<M-Right>", ">gv", { noremap = true, silent = true, desc = "Increase indentation" })
-
 vim.api.nvim_set_keymap("i", "<C-A>", "<HOME>", { noremap = true, silent = true, desc = "Jump to first char in line" })
 vim.api.nvim_set_keymap("i", "<C-E>", "<END>", { noremap = true, silent = true, desc = "Jump to last char in line" })
 
@@ -118,6 +107,5 @@ end, { desc = 'Toggle Line Wrap' })
 vim.keymap.set('n', '<leader>bd', function()
   vim.cmd('bdelete')
 end, { desc = 'Delete Buffer' })
-
 
 -- vim: ts=2 sts=2 sw=2 et

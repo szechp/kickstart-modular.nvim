@@ -30,7 +30,7 @@ require('lazy').setup {
 
   require 'kickstart/plugins/which-key',
 
-  require 'kickstart/plugins/telescope',
+  -- require 'kickstart/plugins/telescope',
 
   require 'kickstart/plugins/lspconfig',
 
@@ -46,7 +46,7 @@ require('lazy').setup {
 
   require 'kickstart/plugins/treesitter',
 
-  require 'kickstart/plugins/neo-tree',
+  -- require 'kickstart/plugins/neo-tree',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -70,9 +70,9 @@ require('lazy').setup {
   { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
-  -- Or use telescope!
+  -- Or use the "help" snacks-picker!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
-  -- you can continue same window with `<space>sr` which resumes last telescope search
+  -- you can continue same window with `<space>sr` which resumes last snacks-picker search
 }
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -21,6 +21,7 @@ return
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
       require('mini.jump2d').setup()
+      -- https://github.com/echasnovski/mini.nvim/wiki/mini.jump2d#replace-f-f-t-t
       local function make_fftt_keymap(key, extra_opts)
         local opts = vim.tbl_deep_extend('force', { allowed_lines = { blank = false, fold = false } }, extra_opts)
         opts.hooks = opts.hooks or {}
@@ -66,14 +67,14 @@ return
       })
       require('mini.icons').setup()
       require('mini.pairs').setup()
-      require('mini.indentscope').setup({
+      require('mini.indentscope').setup {
         draw = {
           animation = require('mini.indentscope').gen_animation.none(),
         },
-      })
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      }
+      -- add/delete/replace surroundings (brackets, quotes, etc.)
       --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - saiw) - [s]urround [a]dd [i]nner [w]ord [)]paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup {

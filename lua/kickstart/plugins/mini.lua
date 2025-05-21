@@ -46,7 +46,6 @@ return
         vim.api.nvim_set_keymap('o', key, command, {})
       end
 
-      require('mini.icons').setup()
       make_fFtT_keymap('f', { allowed_lines = { cursor_before = false } })
       make_fFtT_keymap('F', { allowed_lines = { cursor_after = false } })
       make_fFtT_keymap('t', {
@@ -57,6 +56,8 @@ return
         allowed_lines = { cursor_after = false },
         hooks = { after_jump = function() vim.api.nvim_input('<Right>') end },
       })
+
+      require('mini.icons').setup()
       require('mini.pairs').setup()
       require('mini.indentscope').setup({
         draw = {

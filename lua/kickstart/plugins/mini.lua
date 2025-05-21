@@ -21,7 +21,49 @@ return
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
       require('mini.jump2d').setup()
-      require('mini.jump').setup()
+      local function make_fftt_keymap(key, extra_opts)
+        local opts = vim.tbl_deep_extend('force', { allowed_lines = { blank = false, fold = false } }, extra_opts)
+        opts.hooks = opts.hooks or {}
+
+        opts.hooks.before_start = function()
+          local input = vim.fn.getcharstr()
+        --stylua: ignore
+        if input == nil then
+          opts.spotter = function() return {} end
+        else
+          local pattern = vim.pesc(input)
+          opts.spotter = minijump2d.gen_pattern_spotter(pattern)
+        end
+        end
+
+        -- using `<cmd>...<cr>` enables dot-repeat in operator-pending mode
+        _g.jump2dfftt_opts = _g.jump2dfftt_opts or {}
+        _g.jump2dfftt_opts[key] = opts
+        local command = string.format('<cmd>lua minijump2d.start(_g.jump2dfftt_opts.%s)<cr>', key)
+
+        vim.api.nvim_set_keymap('n', key, command, {})
+        vim.api.nvim_set_keymap('v', key, command, {})
+        vim.api.nvim_set_keymap('o', key, command, {})
+      end
+
+      make_fftt_keymap('f', { allowed_lines = { cursor_before = false } })
+      make_fftt_keymap('f', { allowed_lines = { cursor_after = false } })
+      make_fftt_keymap('t', {
+        allowed_lines = { cursor_before = false },
+        hooks = {
+          after_jump = function()
+            vim.api.nvim_input '<left>'
+          end,
+        },
+      })
+      make_fftt_keymap('t', {
+        allowed_lines = { cursor_after = false },
+        hooks = {
+          after_jump = function()
+            vim.api.nvim_input '<right>'
+          end,
+        },
+      })
       require('mini.icons').setup()
       require('mini.pairs').setup()
       require('mini.indentscope').setup({

@@ -20,6 +20,31 @@ return
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
+        require('mini.base16').setup({
+          palette = {
+            base00 = "#16181a",
+            base01 = "#1e2124",
+            base02 = "#3c4048",
+            base03 = "#7b8496",
+            base04 = "#7b8496",
+            base05 = "#ffffff",
+            base06 = "#16181a",
+            base07 = "#ffffff",
+            base08 = "#ff6e5e",
+            base09 = "#ffbd5e",
+            base0A = "#f1ff5e",
+            base0B = "#5eff6c",
+            base0C = "#5ef1ff",
+            base0D = "#5ea1ff",
+            base0E = "#bd5eff",
+            base0F = "#ff5ef1",
+          },
+          use_cterm = true,
+          plugins = {
+            default = false,
+            ['echasnovski/mini.nvim'] = true,
+          },
+        })
       require('mini.jump2d').setup { mappings = { start_jumping = '' } }
       local function make_fFtT_keymap(key, extra_opts)
         local opts = vim.tbl_deep_extend('force', { allowed_lines = { blank = false, fold = false } }, extra_opts)
@@ -58,6 +83,7 @@ return
       })
 
       require('mini.icons').setup()
+      require('mini.statusline').setup()
       require('mini.pairs').setup()
       require('mini.indentscope').setup({
         draw = {

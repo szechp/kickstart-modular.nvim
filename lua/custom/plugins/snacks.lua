@@ -1,5 +1,6 @@
 return {
   'folke/snacks.nvim',
+  version = "*",
   priority = 1000,
   lazy = false,
   -- snacks.nvim is a plugin that contains a collection of QoL improvements.
@@ -183,6 +184,7 @@ return {
           Snacks.picker.explorer()
         end
       end,
+      desc = '[O]pen explorer'
     },
     {
       '<leader>gg',

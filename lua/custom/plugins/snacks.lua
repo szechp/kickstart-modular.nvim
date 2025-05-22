@@ -101,12 +101,12 @@ return {
     {
       '<leader>sh',
       function() Snacks.picker.help() end,
-      desc = '[H]elp',
+      desc = '[h]elp',
     },
     {
       '<leader>sk',
       function() Snacks.picker.keymaps() end,
-      desc = '[K]eymaps',
+      desc = '[k]eymaps',
     },
     {
       '<leader>.',
@@ -116,12 +116,12 @@ return {
     {
       '<leader>ss',
       function() Snacks.picker.pickers() end,
-      desc = '[S]elect Snacks',
+      desc = '[s]elect Snacks',
     },
     {
       '<leader>sw',
       function() Snacks.picker.grep_word() end,
-      desc = 'current [W]ord',
+      desc = 'current [w]ord',
       mode = { 'n', 'x' },
     },
     {
@@ -132,17 +132,17 @@ return {
     {
       '<leader>sd',
       function() Snacks.picker.diagnostics() end,
-      desc = '[S]earch [D]iagnostics',
+      desc = '[d]iagnostics',
     },
     {
-      '<leader>s<CR>',
+      '<leader>sR',
       function() Snacks.picker.resume() end,
       desc = 'resume last used picker',
     },
     {
       '<leader>sr',
       function() Snacks.picker.recent() end,
-      desc = '[R]ecent Files',
+      desc = '[r]ecent Files',
     },
     {
       '<leader><leader>',
@@ -150,9 +150,9 @@ return {
       desc = '[ ] Find existing buffers',
     },
     {
-      '<leader>s/',
+      '<leader>sg',
       function() Snacks.picker.grep_buffers() end,
-      desc = '[S]earch [/] in Open Files',
+      desc = '[g]rep in Open Files',
     },
     -- Shortcut for searching your Neovim configuration files
     {
@@ -184,7 +184,7 @@ return {
           Snacks.picker.explorer()
         end
       end,
-      desc = '[O]pen explorer'
+      desc = '[o]pen explorer'
     },
     {
       '<leader>gg',

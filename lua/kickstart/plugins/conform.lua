@@ -45,7 +45,7 @@ return {
             range = range,
           }
         end, { range = true }),
-        vim.keymap.set({ 'n', 'v' }, '<leader>f', '<Cmd>Format<CR>'),
+        vim.keymap.set({ 'n', 'v' }, '<leader>f', '<Cmd>Format<CR>', { desc = "[F]ormat"}),
       },
     },
   },

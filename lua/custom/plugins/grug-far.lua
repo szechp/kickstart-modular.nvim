@@ -11,6 +11,7 @@ return {
     }
   end,
   keys = {
-    { '<leader>sR', function() Snacks.picker.resume() end, desc = 'resume last used picker' },
+    { '<leader>sR', '<Cmd>GrugFar<CR>', desc = 'search and [R]eplace', mode = 'n' },
+    { '<leader>sR', '<Cmd>GrugFarWithin<CR>', desc = 'search and [R]eplace', mode = 'v' },
   },
 }

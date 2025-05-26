@@ -10,6 +10,14 @@ return {
     },
   event = "VeryLazy",
   opts = {
+      views = {
+        mini = {
+          position = {
+            row = 1,
+            col = -2, -- negative col means offset from the right
+          },
+        },
+      },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -125,5 +125,9 @@ return {
       end,
       desc = '[o]pen explorer',
     },
+    { mode = { 'n' }, '<c-`>', function() Snacks.terminal() end, { desc = 'Terminal (cwd)' } },
+    { mode = { 'n' }, '<C-/>' },
+    { mode = { 't' }, '<C-`>', '<cmd>close<cr>', { desc = 'Hide Terminal' } },
+    { mode = { 't' }, '<C-/>' },
   },
 }

@@ -48,6 +48,9 @@ return
       })
 
       require('mini.icons').setup()
+      require('mini.diff').setup({
+        source = require('mini.diff').gen_source.none(),
+      })
       require('mini.statusline').setup()
       require('mini.pairs').setup()
       require('mini.indentscope').setup({

@@ -82,6 +82,31 @@ return {
         },
       },
 
+      cmdline = {
+        completion = { menu = { auto_show = true } },
+        keymap = { preset = 'default' },
+        sources = function()
+          local type = vim.fn.getcmdtype()
+          -- Search forward and backward
+          if type == '/' or type == '?' then
+            return {}
+          end
+          -- Commands
+          if type == ':' or type == '@' then
+            return { 'cmdline' }
+          end
+          return {}
+        end,
+        list = {
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = false,
+            -- When `true`, inserts the completion item automatically when selecting it
+            auto_insert = true,
+          },
+        },
+      },
+
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         per_filetype = {

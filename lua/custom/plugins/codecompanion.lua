@@ -27,7 +27,7 @@ return {
       'github/copilot.vim',
       {
         'Davidyz/VectorCode',
-        version = '0.6.13', -- optional, depending on whether you're on nightly or release
+        version = '*', -- optional, depending on whether you're on nightly or release
         build = 'pipx upgrade vectorcode', -- optional but recommended. This keeps your CLI up-to-date.
         dependencies = { 'nvim-lua/plenary.nvim' },
       },

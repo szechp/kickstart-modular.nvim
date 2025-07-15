@@ -92,10 +92,13 @@ return
           -- Leader groups
           { mode = 'n', keys = '<Leader>b', desc = '[b]uffer' },
           { mode = 'n', keys = '<Leader>s', desc = '[s]earch' },
+          { mode = 'n', keys = '<Leader>sy', desc = '[y]aml schemas' },
           { mode = 'n', keys = '<Leader>g', desc = '[g]it' },
           { mode = 'n', keys = '<Leader>t', desc = '[t]oggle' },
           { mode = 'n', keys = '<Leader>gh', desc = '[h]unk' },
           { mode = 'x', keys = '<Leader>gh', desc = '[h]unk' },
+          { mode = 'n', keys = '<Leader>a', desc = '[a]i' },
+          { mode = 'v', keys = '<Leader>a', desc = '[a]i' },
           { mode = 'n', keys = '<Leader>gl', desc = '[l]ine' },
           { mode = 'n', keys = '<Leader>gb', desc = '[b]buffer' },
           { mode = 'n', keys = 'gs', desc = '[s]urround' },

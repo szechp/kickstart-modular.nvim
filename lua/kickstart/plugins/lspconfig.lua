@@ -214,14 +214,10 @@ return {
         --
         --  Feel free to add/remove any LSPs here that you want to install via Mason. They will automatically be installed and setup.
         mason = {
-          yamlls = {
+          yamlls = require('schema-companion').setup_client {
             settings = {
-              yaml = {
-                completion = true,
-              },
-              redhat = {
-                telemetry = { enabled = false },
-              },
+              yaml = { completion = true },
+              redhat = { telemetry = { enabled = false } },
             },
           },
           -- clangd = {},

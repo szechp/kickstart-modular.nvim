@@ -220,6 +220,8 @@ return {
               redhat = { telemetry = { enabled = false } },
             },
           },
+          helm_ls = require('schema-companion').setup_client {},
+
           -- clangd = {},
           -- gopls = {},
           -- pyright = {},

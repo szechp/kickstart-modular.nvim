@@ -52,6 +52,7 @@ return
         source = require('mini.diff').gen_source.none(),
       })
       require('mini.statusline').setup()
+      require('mini.tabline').setup()
 
       require('mini.pairs').setup()
       require('mini.indentscope').setup({
@@ -109,7 +110,10 @@ return
           delay = 0,
             config = {
         -- Compute window width automatically
-              width = 'auto'},
+              width = 'auto',
+              zindex = 2000,
+              focusable = false,
+          },
         },
       })
 

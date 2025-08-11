@@ -29,7 +29,7 @@ return {
       {
         'Davidyz/VectorCode',
         version = '*', -- optional, depending on whether you're on nightly or release
-        build = 'pipx upgrade vectorcode', -- optional but recommended. This keeps your CLI up-to-date.
+        build = 'uv tool install vectorcode', -- optional but recommended. This keeps your CLI up-to-date.
         dependencies = { 'nvim-lua/plenary.nvim' },
       },
       {
@@ -58,21 +58,21 @@ return {
           chat = {
             adapter = 'ollama',
             opts = {
-              model = 'qwen2.5-coder:14b', -- or whatever model you want, e.g. 'codellama:7b-instruct'
+              model = 'qwen3-coder', -- or whatever model you want, e.g. 'codellama:7b-instruct'
               url = 'http://localhost:11434', -- optional, default is this
             },
           },
           inline = {
             adapter = 'ollama',
             opts = {
-              model = 'qwen2.5-coder:14b', -- or whatever model you want, e.g. 'codellama:7b-instruct'
+              model = 'qwen3-coder', -- or whatever model you want, e.g. 'codellama:7b-instruct'
               url = 'http://localhost:11434', -- optional, default is this
             },
           },
           cmd = {
             adapter = 'ollama',
             opts = {
-              model = 'qwen2.5-coder:14b', -- or whatever model you want, e.g. 'codellama:7b-instruct'
+              model = 'qwen3-coder', -- or whatever model you want, e.g. 'codellama:7b-instruct'
               url = 'http://localhost:11434', -- optional, default is this
             },
           },
@@ -96,6 +96,29 @@ return {
           vectorcode = {
             opts = {
               add_tool = true,
+            },
+          },
+          history = {
+            enabled = true,
+            opts = {
+              -- Keymap to open history from chat buffer (default: gh)
+              keymap = 'gh',
+              -- Keymap to save the current chat manually (when auto_save is disabled)
+              save_chat_keymap = 'sc',
+              -- Save all chats by default (disable to save only manually using 'sc')
+              auto_save = true,
+              -- Number of days after which chats are automatically deleted (0 to disable)
+              expiration_days = 0,
+              -- Picker interface (auto resolved to a valid picker)
+              picker = 'default', --- ("telescope", "snacks", "fzf-lua", or "default")
+              picker_keymaps = {
+                rename = { n = 'r', i = '<M-r>' },
+                delete = { n = 'd', i = '<M-d>' },
+                duplicate = { n = '<C-y>', i = '<C-y>' },
+              },
+              auto_generate_title = true,
+              ---Directory path to save the chats
+              dir_to_save = vim.fn.stdpath 'data' .. '/codecompanion-history',
             },
           },
         },

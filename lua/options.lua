@@ -24,7 +24,7 @@ vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 -- Enable break indent
 vim.o.breakindent = true
 
--- Save undo history
+-- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -51,7 +51,7 @@ vim.o.splitbelow = true
 --  Notice listchars is set using `vim.opt` instead of `vim.o`.
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
---   and `:help lua-options-guide`
+--   and `:help lua-guide-options`
 vim.o.list = true
 vim.opt.listchars = { tab = '⇥ ', trail = '·', nbsp = '␣' }
 
@@ -69,4 +69,11 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 vim.o.laststatus = 3
+
+-- Disable line wrapping
+vim.o.wrap = false
+
+-- Highlight max chars per line
+-- vim.o.colorcolumn = '120'
+
 -- vim: ts=2 sts=2 sw=2 et

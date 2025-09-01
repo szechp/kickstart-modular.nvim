@@ -78,4 +78,19 @@ vim.keymap.set('n', '<leader>tw', function()
   vim.notify('Wrap: ' .. (vim.wo.wrap and 'enabled' or 'disabled'))
 end, { desc = 'line [w]rap' })
 
+
+-- custom autocmds
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "helm" },
+  callback = function()
+    -- Force YAML-like spaces
+    vim.bo.expandtab = true
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+    vim.bo.tabstop = 2
+    -- If indentexpr is doing weird stuff, clear it
+    vim.bo.indentexpr = ""
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et

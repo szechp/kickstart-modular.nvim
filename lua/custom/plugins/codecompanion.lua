@@ -53,9 +53,43 @@ return {
     },
     config = function()
       require('codecompanion').setup {
-        log_level = 'DEBUG',
+        opts = {
+          log_level = 'DEBUG',
+        },
         strategies = {
           chat = {
+            slash_commands = {
+              ['buffer'] = {
+                -- Location to the slash command in CodeCompanion
+                opts = {
+                  provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+                },
+              },
+              ['fetch'] = {
+                -- Location to the slash command in CodeCompanion
+                opts = {
+                  provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+                },
+              },
+              ['file'] = {
+                -- Location to the slash command in CodeCompanion
+                opts = {
+                  provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+                },
+              },
+              ['help'] = {
+                -- Location to the slash command in CodeCompanion
+                opts = {
+                  provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+                },
+              },
+              ['image'] = {
+                -- Location to the slash command in CodeCompanion
+                opts = {
+                  provider = 'snacks', -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+                },
+              },
+            },
             adapter = 'ollama',
             opts = {
               model = 'qwen3-coder', -- or whatever model you want, e.g. 'codellama:7b-instruct'

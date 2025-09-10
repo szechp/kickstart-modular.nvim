@@ -64,6 +64,8 @@ return {
       spec = {
         { '<leader>s', group = '[s]earch',  mode = { 'n', 'v' } },
         { '<leader>g', group = '[g]it' },
+        { '<leader>b', group = '[b]uffer' },
+        { '<leader>a', group = '[a]i tools' },
         { '<leader>t', group = '[t]oggle' },
         { '<leader>gh', group = '[h]unk', mode = { 'n', 'v' } },
         { '<leader>gl', group = '[l]ine' },

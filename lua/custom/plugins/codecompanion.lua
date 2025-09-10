@@ -16,10 +16,10 @@ return {
           end
         end,
         mode = { 'n', 'v' },
-        desc = 'Open Code Companion Chat (contextual)',
+        desc = 'open code companion [c]hat (contextual)',
       },
       -- Open action palette
-      { '<leader>aa', '<cmd>CodeCompanionActions<cr>', desc = 'Open Code Companion Action Palette' },
+      { '<leader>aa', '<cmd>CodeCompanionActions<cr>', desc = 'open code companion [a]ction palette' },
     },
     dependencies = {
       'nvim-lua/plenary.nvim',

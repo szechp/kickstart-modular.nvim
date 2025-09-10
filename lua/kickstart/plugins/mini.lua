@@ -51,7 +51,9 @@ return
       require('mini.diff').setup({
         source = require('mini.diff').gen_source.none(),
       })
-      require('mini.statusline').setup()
+      local statusline = require 'mini.statusline'
+      -- set use_icons to true if you have a Nerd Font
+      statusline.setup { use_icons = vim.g.have_nerd_font }
       require('mini.tabline').setup()
 
       require('mini.pairs').setup()

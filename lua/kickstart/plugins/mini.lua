@@ -1,8 +1,8 @@
-return
+return {
   { -- Collection of various small independent plugins/modules
     'nvim-mini/mini.nvim',
     version = '*',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     keys = {
       { '<M-Up>', function() require('mini.move').move_selection 'up' end, mode = 'x', desc = 'MiniMove selection up' },
       { '<M-Down>', function() require('mini.move').move_selection 'down' end, mode = 'x', desc = 'MiniMove selection down' },
@@ -21,47 +21,47 @@ return
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
-      require('mini.base16').setup({
+      require('mini.base16').setup {
         palette = {
-          base00 = "#16181a",
-          base01 = "#1e2124",
-          base02 = "#3c4048",
-          base03 = "#7b8496",
-          base04 = "#7b8496",
-          base05 = "#ffffff",
-          base06 = "#16181a",
-          base07 = "#ffffff",
-          base08 = "#ff6e5e",
-          base09 = "#ffbd5e",
-          base0A = "#f1ff5e",
-          base0B = "#5eff6c",
-          base0C = "#5ef1ff",
-          base0D = "#5ea1ff",
-          base0E = "#bd5eff",
-          base0F = "#ff5ef1",
+          base00 = '#16181a',
+          base01 = '#1e2124',
+          base02 = '#3c4048',
+          base03 = '#7b8496',
+          base04 = '#7b8496',
+          base05 = '#ffffff',
+          base06 = '#16181a',
+          base07 = '#ffffff',
+          base08 = '#ff6e5e',
+          base09 = '#ffbd5e',
+          base0A = '#f1ff5e',
+          base0B = '#5eff6c',
+          base0C = '#5ef1ff',
+          base0D = '#5ea1ff',
+          base0E = '#bd5eff',
+          base0F = '#ff5ef1',
         },
         use_cterm = true,
         plugins = {
           default = false,
           ['echasnovski/mini.nvim'] = true,
         },
-      })
+      }
 
       require('mini.icons').setup()
-      require('mini.diff').setup({
+      require('mini.diff').setup {
         source = require('mini.diff').gen_source.none(),
-      })
+      }
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
       require('mini.tabline').setup()
 
       require('mini.pairs').setup()
-      require('mini.indentscope').setup({
+      require('mini.indentscope').setup {
         draw = {
           animation = require('mini.indentscope').gen_animation.none(),
         },
-      })
+      }
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -129,11 +129,10 @@ return
         },
       }
 
-      vim.keymap.set('n', '<leader>bd', function()
-        require('mini.bufremove').delete(0, false)
-      end, { desc = '[d]elete' })
+      vim.keymap.set('n', '<leader>bd', function() require('mini.bufremove').delete(0, false) end, { desc = '[d]elete' })
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
-  }
+  },
+}
 -- vim: ts=2 sts=2 sw=2 et

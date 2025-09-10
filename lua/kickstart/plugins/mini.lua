@@ -78,44 +78,44 @@ return
       }
 
       require('mini.bufremove').setup()
-      require('mini.clue').setup({
-        triggers = {
-          -- Leader bindings
-          { mode = 'n', keys = '<Leader>' },
-          { mode = 'x', keys = '<Leader>' },
-
-          -- Custom normal/visual mode bindings
-          { mode = 'n', keys = 'gs' },
-          { mode = 'x', keys = 'gs' },
-        },
-
-        clues = {
-          -- Leader groups
-          { mode = 'n', keys = '<Leader>b', desc = '[b]uffer' },
-          { mode = 'n', keys = '<Leader>s', desc = '[s]earch' },
-          { mode = 'n', keys = '<Leader>sy', desc = '[y]aml schemas' },
-          { mode = 'n', keys = '<Leader>g', desc = '[g]it' },
-          { mode = 'n', keys = '<Leader>t', desc = '[t]oggle' },
-          { mode = 'n', keys = '<Leader>gh', desc = '[h]unk' },
-          { mode = 'x', keys = '<Leader>gh', desc = '[h]unk' },
-          { mode = 'n', keys = '<Leader>a', desc = '[a]i' },
-          { mode = 'v', keys = '<Leader>a', desc = '[a]i' },
-          { mode = 'n', keys = '<Leader>gl', desc = '[l]ine' },
-          { mode = 'n', keys = '<Leader>gb', desc = '[b]buffer' },
-          { mode = 'n', keys = 'gs', desc = '[s]urround' },
-          { mode = 'x', keys = 'gs', desc = '[s]urround' },
-        },
-
-        window = {
-          delay = 0,
-            config = {
-        -- Compute window width automatically
-              width = 'auto',
-              zindex = 2000,
-              focusable = false,
-          },
-        },
-      })
+      -- require('mini.clue').setup({
+      --   triggers = {
+      --     -- Leader bindings
+      --     { mode = 'n', keys = '<Leader>' },
+      --     { mode = 'x', keys = '<Leader>' },
+      --
+      --     -- Custom normal/visual mode bindings
+      --     { mode = 'n', keys = 'gs' },
+      --     { mode = 'x', keys = 'gs' },
+      --   },
+      --
+      --   clues = {
+      --     -- Leader groups
+      --     { mode = 'n', keys = '<Leader>b', desc = '[b]uffer' },
+      --     { mode = 'n', keys = '<Leader>s', desc = '[s]earch' },
+      --     { mode = 'n', keys = '<Leader>sy', desc = '[y]aml schemas' },
+      --     { mode = 'n', keys = '<Leader>g', desc = '[g]it' },
+      --     { mode = 'n', keys = '<Leader>t', desc = '[t]oggle' },
+      --     { mode = 'n', keys = '<Leader>gh', desc = '[h]unk' },
+      --     { mode = 'x', keys = '<Leader>gh', desc = '[h]unk' },
+      --     { mode = 'n', keys = '<Leader>a', desc = '[a]i' },
+      --     { mode = 'v', keys = '<Leader>a', desc = '[a]i' },
+      --     { mode = 'n', keys = '<Leader>gl', desc = '[l]ine' },
+      --     { mode = 'n', keys = '<Leader>gb', desc = '[b]buffer' },
+      --     { mode = 'n', keys = 'gs', desc = '[s]urround' },
+      --     { mode = 'x', keys = 'gs', desc = '[s]urround' },
+      --   },
+      --
+      --   window = {
+      --     delay = 0,
+      --       config = {
+      --   -- Compute window width automatically
+      --         width = 'auto',
+      --         zindex = 2000,
+      --         focusable = false,
+      --     },
+      --   },
+      -- })
 
       require('mini.move').setup {
         {

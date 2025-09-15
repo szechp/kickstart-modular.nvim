@@ -2,7 +2,7 @@ return {
   'cenk1cenk2/schema-companion.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
   branch = 'main',
-  version = "8ce1dba0ebb1422269998cabb5580e4f8655336e",
+  commit = "8ce1dba0ebb1422269998cabb5580e4f8655336e",
 
   -- Clone and patch the Kubernetes schema repo during plugin install/update
   build = function()

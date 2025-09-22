@@ -89,7 +89,8 @@ return {
         completion = { menu = { auto_show = true } },
         keymap = {
           preset = 'default',
-          ['<CR>'] = { 'accept_and_enter' },
+          -- ['<down>'] = { 'select_next' }
+          -- ['<CR>'] = { 'accept_and_enter', 'fallback' },
         },
         sources = function()
           local type = vim.fn.getcmdtype()
@@ -108,7 +109,7 @@ return {
             -- When `true`, will automatically select the first item in the completion list
             preselect = false,
             -- When `true`, inserts the completion item automatically when selecting it
-            auto_insert = true,
+            auto_insert = false,
           },
         },
       },

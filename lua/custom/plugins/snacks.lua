@@ -108,7 +108,7 @@ return {
       { '<leader>sd', function() Snacks.picker.diagnostics() end, desc = '[d]iagnostics' },
       { '<leader>sp', function() Snacks.picker.resume() end, desc = 'resume [p]revious picker' },
       { '<leader>sr', function() Snacks.picker.recent() end, desc = '[r]ecent Files' },
-      { '<leader><leader>', function() Snacks.picker.buffers() end, desc = '[ ] Find existing buffers' },
+      { '<leader><leader>', function() Snacks.picker.smart() end, desc = '[ ] smart picker' },
       { '<leader>sg', function() Snacks.picker.grep_buffers() end, desc = '[g]rep in Open Files' },
       -- Shortcut for searching your Neovim configuration files
       { '<leader>sN', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = '[N]eovim files' },

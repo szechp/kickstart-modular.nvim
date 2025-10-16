@@ -86,9 +86,15 @@ return {
       },
 
       cmdline = {
-        completion = { menu = { auto_show = true } },
+        completion = {
+          list = {
+            selection = { preselect = false },
+          },
+          menu = { auto_show = true },
+        },
         keymap = {
           preset = 'default',
+          ['<Right>'] = { 'show', 'accept' },
           -- ['<down>'] = { 'select_next' }
           -- ['<CR>'] = { 'accept_and_enter', 'fallback' },
         },
@@ -104,14 +110,6 @@ return {
           end
           return {}
         end,
-        list = {
-          selection = {
-            -- When `true`, will automatically select the first item in the completion list
-            preselect = false,
-            -- When `true`, inserts the completion item automatically when selecting it
-            auto_insert = false,
-          },
-        },
       },
 
       sources = {

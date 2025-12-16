@@ -214,13 +214,49 @@ return {
         --
         --  Feel free to add/remove any LSPs here that you want to install via Mason. They will automatically be installed and setup.
         mason = {
-          yamlls = require('schema-companion').setup_client {
-            settings = {
-              yaml = { completion = true },
-              redhat = { telemetry = { enabled = false } },
+          yamlls = require('schema-companion').setup_client(
+            require('schema-companion').adapters.yamlls.setup {
+              sources = {
+                -- your sources for the language server
+                require('schema-companion').sources.matchers.kubernetes.setup { version = 'master' },
+                require('schema-companion').sources.lsp.setup(),
+                require('schema-companion').sources.schemas.setup {
+                  {
+                    name = 'Kubernetes master',
+                    uri = 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json',
+                  },
+                },
+              },
             },
+            {
+              --- your yaml language server configuration
+            }
+          ),
+          helm_ls = require('schema-companion').setup_client(
+            require('schema-companion').adapters.helmls.setup {
+              sources = {
+                -- your sources for the language server
+                require('schema-companion').sources.matchers.kubernetes.setup { version = 'master' },
+              },
+            },
+            {
+              --- your language server configuration
+            }
+          ),
+
+          jsonls = {
+            require('schema-companion').setup_client(
+              require('schema-companion').adapters.jsonls.setup {
+                sources = {
+                  require('schema-companion').sources.lsp.setup(),
+                  require('schema-companion').sources.none.setup(),
+                },
+              },
+              {
+                --- your language server configuration
+              }
+            ),
           },
-          helm_ls = require('schema-companion').setup_client {},
 
           -- clangd = {},
           -- gopls = {},

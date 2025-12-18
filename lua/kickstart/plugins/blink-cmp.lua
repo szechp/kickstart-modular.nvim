@@ -94,7 +94,7 @@ return {
         },
         keymap = {
           preset = 'default',
-          ['<Right>'] = { 'show', 'accept' },
+          ['<Right>'] = { 'show', 'accept', 'fallback' },
           -- ['<down>'] = { 'select_next' }
           -- ['<CR>'] = { 'accept_and_enter', 'fallback' },
         },

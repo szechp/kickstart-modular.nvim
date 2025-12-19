@@ -21,10 +21,9 @@ return {
   ---@type snacks.Config
   opts = {
     lazygit = {},
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
+    gitbrowse = {},
     dashboard = { enabled = false },
-
+    quickfile = {},
     picker = {
       win = {
         -- input window
@@ -98,38 +97,40 @@ return {
 
   -- See `:help snacks-pickers-sources`
   keys = {
+    -- gitbrowse
+    { '<leader>gw', function() Snacks.gitbrowse.open() end, desc = 'open in [w]eb browser' },
     -- snacks picker keymaps to replace telescope
-      { '<leader>sh', function() Snacks.picker.help() end, desc = '[h]elp' },
-      { '<leader>sk', function() Snacks.picker.keymaps() end, desc = '[k]eymaps' },
-      { '<leader>.', function() Snacks.picker.files() end, desc = 'find files in [.]/' },
-      { '<leader>ss', function() Snacks.picker.pickers() end, desc = '[s]elect Snacks' },
-      { '<leader>sw', function() Snacks.picker.grep_word() end, desc = 'current [w]ord', mode = { 'n', 'x' } },
-      { '<leader>/', function() Snacks.picker.grep() end, desc = 'grep (cwd)' },
-      { '<leader>sd', function() Snacks.picker.diagnostics() end, desc = '[d]iagnostics' },
-      { '<leader>sp', function() Snacks.picker.resume() end, desc = 'resume [p]revious picker' },
-      { '<leader>sr', function() Snacks.picker.recent() end, desc = '[r]ecent Files' },
-      { '<leader><leader>', function() Snacks.picker.smart() end, desc = '[ ] smart picker' },
-      { '<leader>sg', function() Snacks.picker.grep_buffers() end, desc = '[g]rep in Open Files' },
-      -- Shortcut for searching your Neovim configuration files
-      { '<leader>sN', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = '[N]eovim files' },
-      -- other snacks keymaps
-      { '<leader>gg', function() Snacks.lazygit() end, desc = 'lazy[g]it' },
-      {
-        '<leader>o',
-        function()
-          local explorer_pickers = Snacks.picker.get { source = 'explorer' }
-          for _, v in pairs(explorer_pickers) do
-            v:focus()
-          end
-          if #explorer_pickers == 0 then
-            Snacks.picker.explorer()
-          end
-        end,
-        desc = '[o]pen explorer',
-      },
-      { mode = { 'n' }, '<c-`>', function() Snacks.terminal() end, { desc = 'Terminal (cwd)' } },
-      { mode = { 'n' }, '<C-/>' },
-      { mode = { 't' }, '<C-`>', '<cmd>close<cr>', { desc = 'Hide Terminal' } },
-      { mode = { 't' }, '<C-/>' },
+    { '<leader>sh', function() Snacks.picker.help() end, desc = '[h]elp' },
+    { '<leader>sk', function() Snacks.picker.keymaps() end, desc = '[k]eymaps' },
+    { '<leader>.', function() Snacks.picker.files() end, desc = 'find files in [.]/' },
+    { '<leader>ss', function() Snacks.picker.pickers() end, desc = '[s]elect Snacks' },
+    { '<leader>sw', function() Snacks.picker.grep_word() end, desc = 'current [w]ord', mode = { 'n', 'x' } },
+    { '<leader>/', function() Snacks.picker.grep() end, desc = 'grep (cwd)' },
+    { '<leader>sd', function() Snacks.picker.diagnostics() end, desc = '[d]iagnostics' },
+    { '<leader>sp', function() Snacks.picker.resume() end, desc = 'resume [p]revious picker' },
+    { '<leader>sr', function() Snacks.picker.recent() end, desc = '[r]ecent Files' },
+    { '<leader><leader>', function() Snacks.picker.smart() end, desc = '[ ] smart picker' },
+    { '<leader>sg', function() Snacks.picker.grep_buffers() end, desc = '[g]rep in Open Files' },
+    -- Shortcut for searching your Neovim configuration files
+    { '<leader>sN', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = '[N]eovim files' },
+    -- other snacks keymaps
+    { '<leader>gg', function() Snacks.lazygit() end, desc = 'lazy[g]it' },
+    {
+      '<leader>o',
+      function()
+        local explorer_pickers = Snacks.picker.get { source = 'explorer' }
+        for _, v in pairs(explorer_pickers) do
+          v:focus()
+        end
+        if #explorer_pickers == 0 then
+          Snacks.picker.explorer()
+        end
+      end,
+      desc = '[o]pen explorer',
+    },
+    { mode = { 'n' }, '<c-`>', function() Snacks.terminal() end, { desc = 'Terminal (cwd)' } },
+    { mode = { 'n' }, '<C-/>' },
+    { mode = { 't' }, '<C-`>', '<cmd>close<cr>', { desc = 'Hide Terminal' } },
+    { mode = { 't' }, '<C-/>' },
   },
 }

@@ -21,6 +21,7 @@ return {
   ---@type snacks.Config
   opts = {
     lazygit = {},
+    statuscolumn = { enabled = false },
     gitbrowse = {},
     dashboard = { enabled = false },
     quickfile = {},

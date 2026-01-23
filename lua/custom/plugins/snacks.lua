@@ -3,6 +3,7 @@ return {
   version = '*',
   priority = 1000,
   lazy = false,
+  enabled = not vim.g.vscode,
   -- snacks.nvim is a plugin that contains a collection of QoL improvements.
   -- One of those plugins is called snacks-picker
   -- It is a fuzzy finder, inspired by Telescope, that comes with a lot of different
@@ -116,6 +117,19 @@ return {
     { '<leader>sN', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = '[N]eovim files' },
     -- other snacks keymaps
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'lazy[g]it' },
+    {
+      '<D-S-e>',
+      function()
+        local explorer_pickers = Snacks.picker.get { source = 'explorer' }
+        for _, v in pairs(explorer_pickers) do
+          v:focus()
+        end
+        if #explorer_pickers == 0 then
+          Snacks.picker.explorer()
+        end
+      end,
+      desc = 'Open Snacks Explorer with Cmd+Shift+E',
+    },
     {
       '<leader>o',
       function()

@@ -3,6 +3,7 @@
 --- @type LazySpec
 return {
   'luukvbaal/statuscol.nvim',
+  enabled = not vim.g.vscode,
   config = function()
     vim.opt.fillchars = vim.g.have_nerd_font and { foldclose = '', foldopen = '', foldsep = ' ' } or { foldclose = '˃', foldopen = '˅', foldsep = ' ' }
     vim.o.foldcolumn = '1'

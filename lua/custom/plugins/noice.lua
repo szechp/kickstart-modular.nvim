@@ -8,6 +8,7 @@ return {
     --   If not available, we use `mini` as the fallback
     -- "rcarriga/nvim-notify",
     },
+  enabled = not vim.g.vscode,
   event = "VeryLazy",
   opts = {
       views = {

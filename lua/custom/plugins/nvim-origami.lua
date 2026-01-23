@@ -4,6 +4,7 @@
 return {
   'chrisgrieser/nvim-origami',
   event = 'VeryLazy',
+  enabled = not vim.g.vscode,
   ---@module 'origami'
   ---@type Origami.config
   opts = {

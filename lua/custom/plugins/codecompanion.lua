@@ -1,6 +1,7 @@
 return {
   {
     'olimorris/codecompanion.nvim',
+    enabled = not vim.g.vscode,
     keys = {
       -- Open chat window
       {
